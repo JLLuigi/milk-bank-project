@@ -14,32 +14,37 @@ type BadgeVariant =
   | 'POST'
 
 const MAP: Record<string, { bg: string; text: string; ring: string }> = {
-  RAW:             { bg: '#F3F2F1', text: '#636260', ring: '#DDDCDB' },
-  PRE_TESTING:     { bg: '#FFFBEB', text: '#B45309', ring: '#FDE68A' },
-  POST_TESTING:    { bg: '#FFFBEB', text: '#B45309', ring: '#FDE68A' },
-  PRE_TEST_PASSED: { bg: '#FDF0F5', text: '#c07090', ring: '#f0c0d0' },
-  PASTEURIZED:     { bg: '#EFF6FF', text: '#1D4ED8', ring: '#BFDBFE' },
-  READY:           { bg: '#F0FDF4', text: '#15803D', ring: '#BBF7D0' },
-  DISPENSED:       { bg: '#F0FDFA', text: '#0F766E', ring: '#99F6E4' },
-  PRE_TEST_FAILED: { bg: '#FEF2F2', text: '#B91C1C', ring: '#FECACA' },
-  POST_TEST_FAILED:{ bg: '#FEF2F2', text: '#B91C1C', ring: '#FECACA' },
-  DISCARDED:       { bg: '#FEF2F2', text: '#B91C1C', ring: '#FECACA' },
-  Passed:          { bg: '#F0FDF4', text: '#15803D', ring: '#BBF7D0' },
-  Failed:          { bg: '#FEF2F2', text: '#B91C1C', ring: '#FECACA' },
-  Pending:         { bg: '#FFFBEB', text: '#B45309', ring: '#FDE68A' },
-  WAITING:         { bg: '#FFF7ED', text: '#C2410C', ring: '#FDBA74' },
-  NOTIFIED:        { bg: '#FDF0F5', text: '#c07090', ring: '#f0c0d0' },
-  FULFILLED:       { bg: '#F0FDF4', text: '#15803D', ring: '#BBF7D0' },
-  CANCELLED:       { bg: '#F3F2F1', text: '#636260', ring: '#DDDCDB' },
-  Sent:            { bg: '#F0FDF4', text: '#15803D', ring: '#BBF7D0' },
-  PASS:            { bg: '#F0FDF4', text: '#15803D', ring: '#BBF7D0' },
-  FAIL:            { bg: '#FEF2F2', text: '#B91C1C', ring: '#FECACA' },
-  NICU:            { bg: '#FDF0F5', text: '#c07090', ring: '#eea4bb' },
-  'Non-NICU':      { bg: '#F3F2F1', text: '#636260', ring: '#DDDCDB' },
-  FC:              { bg: '#EFF6FF', text: '#1D4ED8', ring: '#BFDBFE' },
-  PU:              { bg: '#F5F3FF', text: '#6D28D9', ring: '#DDD6FE' },
-  PRE:             { bg: '#FFFBEB', text: '#B45309', ring: '#FDE68A' },
-  POST:            { bg: '#EFF6FF', text: '#1D4ED8', ring: '#BFDBFE' },
+  // Batch lifecycle — light → dark along the palette
+  RAW:             { bg: '#FFF3EC', text: '#C4815A', ring: '#FBC4AB' },
+  PRE_TESTING:     { bg: '#FFF0EC', text: '#C46858', ring: '#F8AD9D' },
+  PRE_TEST_PASSED: { bg: '#FFF0F2', text: '#C07090', ring: '#FFCAD4' },
+  PASTEURIZED:     { bg: '#FFF5F7', text: '#B06070', ring: '#FADDE1' },
+  POST_TESTING:    { bg: '#FFF0F5', text: '#C05080', ring: '#FFA6C1' },
+  READY:           { bg: '#FFF0F5', text: '#C04878', ring: '#FFACC5' },
+  DISPENSED:       { bg: '#FFF0F3', text: '#B45070', ring: '#F4ACB7' },
+  PRE_TEST_FAILED: { bg: '#FFEEEE', text: '#C04040', ring: '#F08080' },
+  POST_TEST_FAILED:{ bg: '#FFEEEE', text: '#C04040', ring: '#F08080' },
+  DISCARDED:       { bg: '#FFEEEE', text: '#C04040', ring: '#F08080' },
+  // Screening
+  Passed:          { bg: '#FFECF2', text: '#B83870', ring: '#FF87AB' },
+  Failed:          { bg: '#FFEEEE', text: '#C04040', ring: '#F08080' },
+  Pending:         { bg: '#FFF0EC', text: '#C46858', ring: '#F4978E' },
+  // Inquiry
+  WAITING:         { bg: '#FFEEEC', text: '#B84848', ring: '#F4978E' },
+  NOTIFIED:        { bg: '#FFF0F5', text: '#C04878', ring: '#FF97B7' },
+  FULFILLED:       { bg: '#FFECF2', text: '#B83870', ring: '#FF87AB' },
+  CANCELLED:       { bg: '#FFF8F0', text: '#B07040', ring: '#FFDAB9' },
+  // SMS / Lab
+  Sent:            { bg: '#FFF0F5', text: '#C04878', ring: '#FF97B7' },
+  PASS:            { bg: '#FFECF2', text: '#B83870', ring: '#FF87AB' },
+  FAIL:            { bg: '#FFEEEE', text: '#C04040', ring: '#F08080' },
+  // Mode / Role badges
+  NICU:            { bg: '#FFF0F5', text: '#C05878', ring: '#FFC4D6' },
+  'Non-NICU':      { bg: '#FFF8F0', text: '#B07040', ring: '#FFDAB9' },
+  FC:              { bg: '#FFECF3', text: '#CC2060', ring: '#FF5D8F' },
+  PU:              { bg: '#FFF3EC', text: '#C4815A', ring: '#FBC4AB' },
+  PRE:             { bg: '#FFF0EC', text: '#C46858', ring: '#F8AD9D' },
+  POST:            { bg: '#FFECF3', text: '#CC2060', ring: '#FF5D8F' },
 }
 
 const LABEL_MAP: Record<string, string> = {

@@ -3,10 +3,10 @@ import { Search } from 'lucide-react'
 import { PageHeader } from '../shared/PageHeader'
 import { AUDIT_LOGS } from '../../mockData'
 
-const ACTION_COLORS: Record<string, string> = {
-  INSERT: 'bg-emerald-100 text-emerald-700',
-  UPDATE: 'bg-blue-100 text-blue-700',
-  DELETE: 'bg-red-100 text-red-700',
+const ACTION_STYLES: Record<string, { bg: string; text: string; ring: string }> = {
+  INSERT: { bg: '#FFECF2', text: '#B83870', ring: '#FF87AB' },
+  UPDATE: { bg: '#FFF0F5', text: '#C04878', ring: '#FFACC5' },
+  DELETE: { bg: '#FFEEEE', text: '#C04040', ring: '#F08080' },
 }
 
 export function AuditLogScreen() {
@@ -108,12 +108,23 @@ export function AuditLogScreen() {
                       </span>
                     </td>
                     <td className="px-4 py-3.5">
-                      <span
-                        className={`text-xs px-2 py-0.5 rounded-full ${ACTION_COLORS[log.action] ?? 'bg-stone-100 text-stone-600'}`}
-                        style={{ fontFamily: 'var(--font-family-mono)' }}
-                      >
-                        {log.action}
-                      </span>
+                      {(() => {
+                        const s = ACTION_STYLES[log.action] ?? { bg: '#FFF3EC', text: '#C4815A', ring: '#FBC4AB' }
+                        return (
+                          <span
+                            className="text-xs px-2 py-0.5 rounded-full"
+                            style={{
+                              background: s.bg,
+                              color: s.text,
+                              boxShadow: `inset 0 0 0 1px ${s.ring}`,
+                              fontFamily: 'var(--font-family-mono)',
+                              fontWeight: 500,
+                            }}
+                          >
+                            {log.action}
+                          </span>
+                        )
+                      })()}
                     </td>
                     <td className="px-4 py-3.5">
                       <span className="text-xs text-[#6B7280]" style={{ fontFamily: 'var(--font-family-mono)' }}>

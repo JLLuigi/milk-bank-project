@@ -18,23 +18,23 @@ const LEDGER_DATA = [
 ]
 
 const STATUS_DISTRIBUTION = [
-  { name: 'Ready', value: 420, color: '#22C55E' },
-  { name: 'In Testing', value: 210, color: '#7C5CFC' },
-  { name: 'Pasteurized', value: 180, color: '#3B82F6' },
-  { name: 'Raw', value: 60, color: '#9CA3AF' },
-  { name: 'Dispensed', value: 200, color: '#14B8A6' },
-  { name: 'Discarded', value: 150, color: '#EF4444' },
+  { name: 'Ready', value: 420, color: '#FF87AB' },
+  { name: 'In Testing', value: 210, color: '#eea4bb' },
+  { name: 'Pasteurized', value: 180, color: '#FADDE1' },
+  { name: 'Raw', value: 60, color: '#FBC4AB' },
+  { name: 'Dispensed', value: 200, color: '#F4ACB7' },
+  { name: 'Discarded', value: 150, color: '#F08080' },
 ]
 
 const SUMMARY_STATS = [
-  { label: 'Collections', value: 8, unit: 'batches', color: '#7C5CFC' },
-  { label: 'Volume Collected', value: '1,220', unit: 'mL', color: '#7C5CFC' },
-  { label: 'Volume Pasteurized', value: 560, unit: 'mL', color: '#3B82F6' },
-  { label: 'Volume Dispensed', value: 320, unit: 'mL', color: '#14B8A6' },
-  { label: 'Volume Discarded', value: 150, unit: 'mL', color: '#EF4444' },
-  { label: 'Donors Registered', value: 8, unit: 'donors', color: '#F59E0B' },
-  { label: 'Recipients Served', value: 4, unit: 'recipients', color: '#F6CFCF' },
-  { label: 'Discard Rate', value: '12.3%', unit: '', color: '#EF4444' },
+  { label: 'Collections', value: 8, unit: 'batches', color: '#FFACC5' },
+  { label: 'Volume Collected', value: '1,220', unit: 'mL', color: '#FFACC5' },
+  { label: 'Volume Pasteurized', value: 560, unit: 'mL', color: '#FADDE1' },
+  { label: 'Volume Dispensed', value: 320, unit: 'mL', color: '#FF87AB' },
+  { label: 'Volume Discarded', value: 150, unit: 'mL', color: '#F08080' },
+  { label: 'Donors Registered', value: 8, unit: 'donors', color: '#FFA6C1' },
+  { label: 'Recipients Served', value: 4, unit: 'recipients', color: '#FFC4D6' },
+  { label: 'Discard Rate', value: '12.3%', unit: '', color: '#F08080' },
 ]
 
 function CustomTooltip({ active, payload }: any) {
@@ -42,7 +42,7 @@ function CustomTooltip({ active, payload }: any) {
   return (
     <div
       className="px-3 py-2 rounded-xl text-xs"
-      style={{ background: '#0D0B1A', border: '1px solid rgba(124,92,252,0.2)', color: '#C8C0F0', fontFamily: 'var(--font-family-mono)' }}
+      style={{ background: '#322e2d', border: '1px solid rgba(238,164,187,0.2)', color: '#f5cedd', fontFamily: 'var(--font-family-mono)' }}
     >
       <div style={{ color: payload[0].payload.color }}>{payload[0].name}</div>
       <div className="text-white">{payload[0].value} mL</div>
@@ -80,7 +80,7 @@ export function ReportsScreen() {
                   onClick={() => setReportType(type)}
                   className="px-4 py-2.5 text-sm transition-colors"
                   style={{
-                    background: reportType === type ? '#7C5CFC' : 'white',
+                    background: reportType === type ? '#eea4bb' : 'white',
                     color: reportType === type ? 'white' : '#6B7280',
                     fontWeight: reportType === type ? 600 : 400,
                   }}
@@ -119,14 +119,14 @@ export function ReportsScreen() {
             whileTap={{ scale: 0.99 }}
             transition={{ type: 'spring', stiffness: 400, damping: 20 }}
             className="px-5 py-2.5 text-sm text-white rounded-xl flex items-center gap-2"
-            style={{ background: 'linear-gradient(135deg, #7C5CFC, #A88DFF)', boxShadow: '0 4px 16px rgba(124,92,252,0.3)', fontWeight: 600 }}
+            style={{ background: 'linear-gradient(135deg, #eea4bb, #e08caa)', boxShadow: '0 4px 16px rgba(238,164,187,0.35)', fontWeight: 600 }}
           >
             <BarChart3 className="w-4 h-4" />
             Generate
           </motion.button>
           <div className="flex gap-2 ml-auto">
             <button
-              className="flex items-center gap-2 px-4 py-2.5 text-sm rounded-xl border transition-colors hover:bg-[#F0EBFF] hover:border-[#7C5CFC] hover:text-[#7C5CFC]"
+              className="flex items-center gap-2 px-4 py-2.5 text-sm rounded-xl border transition-colors hover:bg-[#F8F0F4] hover:border-[#eea4bb] hover:text-[#eea4bb]"
               style={{ borderColor: 'rgba(0,0,0,0.08)', color: '#6B7280', background: 'white' }}
             >
               <FileDown className="w-4 h-4" />
@@ -173,8 +173,8 @@ export function ReportsScreen() {
               <p className="text-xs text-[#9CA3AF] mt-0.5">Monthly volume collected, 2024</p>
             </div>
             <span
-              className="text-xs px-2.5 py-1 rounded-full text-[#7C5CFC]"
-              style={{ background: '#F0EBFF', fontFamily: 'var(--font-family-mono)' }}
+              className="text-xs px-2.5 py-1 rounded-full text-[#c07090]"
+              style={{ background: '#F8F0F4', fontFamily: 'var(--font-family-mono)' }}
             >
               {reportType}
             </span>
@@ -183,18 +183,18 @@ export function ReportsScreen() {
             <AreaChart data={MONTHLY_COLLECTION} margin={{ top: 4, right: 4, left: -20, bottom: 0 }}>
               <defs>
                 <linearGradient id="reportGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#7C5CFC" stopOpacity={0.15} />
-                  <stop offset="95%" stopColor="#7C5CFC" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#eea4bb" stopOpacity={0.2} />
+                  <stop offset="95%" stopColor="#eea4bb" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.04)" />
               <XAxis dataKey="month" tick={{ fontSize: 11, fill: '#9CA3AF', fontFamily: 'var(--font-family-mono)' }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fontSize: 11, fill: '#9CA3AF', fontFamily: 'var(--font-family-mono)' }} axisLine={false} tickLine={false} />
               <Tooltip
-                contentStyle={{ background: '#0D0B1A', border: '1px solid rgba(124,92,252,0.2)', borderRadius: 12, color: '#C8C0F0', fontSize: 12, fontFamily: 'var(--font-family-mono)' }}
+                contentStyle={{ background: '#322e2d', border: '1px solid rgba(238,164,187,0.2)', borderRadius: 12, color: '#f5cedd', fontSize: 12, fontFamily: 'var(--font-family-mono)' }}
                 formatter={(v: number) => [`${v} mL`, 'Volume']}
               />
-              <Area type="monotone" dataKey="volume" stroke="#7C5CFC" strokeWidth={2.5} fill="url(#reportGrad)" />
+              <Area type="monotone" dataKey="volume" stroke="#eea4bb" strokeWidth={2.5} fill="url(#reportGrad)" />
             </AreaChart>
           </ResponsiveContainer>
         </div>
@@ -266,7 +266,7 @@ export function ReportsScreen() {
               {LEDGER_DATA.map((row, i) => (
                 <tr
                   key={row.program}
-                  className="hover:bg-[#F8F8FC] transition-colors"
+                  className="hover:bg-[#FDF5F8] transition-colors"
                   style={{ borderBottom: i < LEDGER_DATA.length - 1 ? '1px solid rgba(0,0,0,0.04)' : 'none' }}
                 >
                   <td className="px-5 py-4 text-sm text-[#1A1A1A]" style={{ fontWeight: 500 }}>{row.program}</td>
@@ -278,15 +278,15 @@ export function ReportsScreen() {
                   <td className="px-5 py-4 text-sm text-[#1A1A1A]" style={{ fontFamily: 'var(--font-family-mono)' }}>{row.carryover}</td>
                 </tr>
               ))}
-              <tr style={{ background: '#F0EBFF', borderTop: '2px solid rgba(124,92,252,0.15)' }}>
-                <td className="px-5 py-3.5 text-sm text-[#7C5CFC]" style={{ fontWeight: 700 }}>Total</td>
+              <tr style={{ background: '#F8F0F4', borderTop: '2px solid rgba(238,164,187,0.25)' }}>
+                <td className="px-5 py-3.5 text-sm text-[#c07090]" style={{ fontWeight: 700 }}>Total</td>
                 {[
                   LEDGER_DATA.reduce((s, r) => s + r.raw, 0),
                   LEDGER_DATA.reduce((s, r) => s + r.qaFailure, 0),
                   LEDGER_DATA.reduce((s, r) => s + r.netToPasteurization, 0),
                   LEDGER_DATA.reduce((s, r) => s + r.carryover, 0),
                 ].map((total, i) => (
-                  <td key={i} className="px-5 py-3.5 text-sm text-[#7C5CFC]" style={{ fontFamily: 'var(--font-family-mono)', fontWeight: 700 }}>
+                  <td key={i} className="px-5 py-3.5 text-sm text-[#c07090]" style={{ fontFamily: 'var(--font-family-mono)', fontWeight: 700 }}>
                     {i === 1 && total > 0 ? `-${total}` : total}
                   </td>
                 ))}
