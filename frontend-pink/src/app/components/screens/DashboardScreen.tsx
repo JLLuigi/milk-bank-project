@@ -4,7 +4,7 @@ import {
   ResponsiveContainer, BarChart, Bar
 } from 'recharts'
 import {
-  TrendingUp, ArrowUpRight, Droplets, Users, HeartHandshake,
+  ArrowUpRight, Droplets, Users, HeartHandshake,
   FlaskConical, CheckCircle2, ArrowRight, Clock
 } from 'lucide-react'
 import { PageHeader } from '../shared/PageHeader'
@@ -42,32 +42,32 @@ const ACTIVITY = [
 const KPI_DEFS = [
   {
     label: 'Total Milk Collected', unit: 'mL', sub: 'all batches on record',
-    iconColor: '#eea4bb', iconBg: '#F8F0F4', icon: Droplets, trend: '+8.2%', screen: 'inventory' as Screen,
+    iconBg: '#F8F0F4', emoji: '🍼', trend: '+8.2%', screen: 'inventory' as Screen,
     getValue: (batches: typeof MILK_BATCHES) => batches.reduce((s, b) => s + b.volume, 0),
   },
   {
     label: 'Ready for Dispensing', unit: 'mL', sub: 'cleared for release',
-    iconColor: '#4CAF50', iconBg: '#F0FDF4', icon: CheckCircle2, trend: '+12%', screen: 'inventory' as Screen,
+    iconBg: '#F0FDF4', emoji: '✅', trend: '+12%', screen: 'inventory' as Screen,
     getValue: (batches: typeof MILK_BATCHES) => batches.filter((b) => b.status === 'READY').reduce((s, b) => s + b.volume, 0),
   },
   {
     label: 'Active Donors', unit: '', sub: 'screening passed',
-    iconColor: '#F9A825', iconBg: '#FFFBEB', icon: Users, trend: '+2', screen: 'donors' as Screen,
+    iconBg: '#FFFBEB', emoji: '🤱', trend: '+2', screen: 'donors' as Screen,
     getValue: (_: typeof MILK_BATCHES, donors: typeof DONORS) => donors.filter((d) => d.screeningStatus === 'Passed').length,
   },
   {
     label: 'Active Recipients', unit: '', sub: 'on file',
-    iconColor: '#eea4bb', iconBg: '#F8F0F4', icon: HeartHandshake, trend: undefined, screen: 'recipients' as Screen,
+    iconBg: '#F8F0F4', emoji: '👶', trend: undefined, screen: 'recipients' as Screen,
     getValue: () => INQUIRIES.filter((i) => i.status !== 'CANCELLED').length,
   },
   {
     label: 'Pending Lab Tests', unit: '', sub: 'batches in testing',
-    iconColor: '#636260', iconBg: '#F3F2F1', icon: FlaskConical, trend: undefined, screen: 'lab' as Screen,
+    iconBg: '#F3F2F1', emoji: '🧪', trend: undefined, screen: 'lab' as Screen,
     getValue: (batches: typeof MILK_BATCHES) => batches.filter((b) => b.status === 'PRE_TESTING' || b.status === 'POST_TESTING').length,
   },
   {
     label: 'Dispensed This Month', unit: 'mL', sub: 'June 2024',
-    iconColor: '#423e3d', iconBg: '#F2EFED', icon: TrendingUp, trend: undefined, screen: 'dispensing' as Screen,
+    iconBg: '#F2EFED', emoji: '📦', trend: undefined, screen: 'dispensing' as Screen,
     getValue: (batches: typeof MILK_BATCHES) => batches.filter((b) => b.status === 'DISPENSED').reduce((s, b) => s + b.volume, 0),
   },
 ]
@@ -84,7 +84,6 @@ export function DashboardScreen({ onNavigate }: DashboardScreenProps) {
       {/* 6 KPI cards */}
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
         {KPI_DEFS.map((kpi) => {
-          const Icon = kpi.icon
           const value = kpi.getValue(MILK_BATCHES, DONORS)
           return (
             <motion.div
@@ -97,10 +96,10 @@ export function DashboardScreen({ onNavigate }: DashboardScreenProps) {
             >
               <div className="flex items-start justify-between mb-4">
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center"
+                  className="w-10 h-10 rounded-xl flex items-center justify-center text-xl"
                   style={{ background: kpi.iconBg }}
                 >
-                  <Icon className="w-5 h-5" style={{ color: kpi.iconColor }} />
+                  {kpi.emoji}
                 </div>
                 {kpi.trend && (
                   <div className="flex items-center gap-1 text-xs" style={{ color: '#4CAF50' }}>

@@ -5,14 +5,14 @@ import { StatusBadge } from '../shared/StatusBadge'
 import { MILK_BATCHES } from '../../mockData'
 
 const STATUS_STAGES = [
-  { status: 'RAW', label: 'Raw', color: '#A8A09A', bg: '#F5F6FA' },
-  { status: 'PRE_TESTING', label: 'In Pre-Testing', color: '#B45309', bg: '#FEF3C7' },
-  { status: 'PRE_TEST_PASSED', label: 'Pre-Test Passed', color: '#1D4ED8', bg: '#EFF6FF' },
-  { status: 'PASTEURIZED', label: 'Pasteurized', color: '#1D4ED8', bg: '#EFF6FF' },
-  { status: 'POST_TESTING', label: 'In Post-Testing', color: '#B45309', bg: '#FEF3C7' },
-  { status: 'READY', label: 'Ready', color: '#065F46', bg: '#ECFDF5' },
-  { status: 'DISPENSED', label: 'Dispensed', color: '#0F766E', bg: '#F0FDFA' },
-  { status: 'DISCARDED', label: 'Discarded', color: '#991B1B', bg: '#FEF2F2' },
+  { status: 'RAW',             label: 'Raw',            color: '#C4815A', bg: '#FFF3EC' },
+  { status: 'PRE_TESTING',    label: 'In Pre-Testing', color: '#C46858', bg: '#FFF0EC' },
+  { status: 'PRE_TEST_PASSED',label: 'Pre-Test Passed',color: '#C07090', bg: '#FFF0F2' },
+  { status: 'PASTEURIZED',    label: 'Pasteurized',    color: '#B06070', bg: '#FFF5F7' },
+  { status: 'POST_TESTING',   label: 'In Post-Testing',color: '#C05080', bg: '#FFF0F5' },
+  { status: 'READY',          label: 'Ready',          color: '#C04878', bg: '#FFF0F5' },
+  { status: 'DISPENSED',      label: 'Dispensed',      color: '#B45070', bg: '#FFF0F3' },
+  { status: 'DISCARDED',      label: 'Discarded',      color: '#C04040', bg: '#FFEEEE' },
 ]
 
 export function InventoryScreen() {
