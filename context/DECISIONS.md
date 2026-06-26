@@ -49,8 +49,6 @@ Decision: Use React with TypeScript (Vite) for the frontend, Supabase for backen
 
 Why: Supabase provides PostgreSQL, authentication, and Edge Functions in a single managed platform — reducing infrastructure overhead for a small academic team. React + Vite is the fastest path to a working UI with TypeScript safety. Vercel is the standard deployment target for Vite apps.
 
-Alternatives considered: Express + raw PostgreSQL (higher learning overhead, no built-in auth); Firebase (NoSQL — poor fit for relational milk tracking data); Next.js (overkill for a staff-only internal tool).
-
 Consequences:
 - Positive: Reduced backend setup time; Supabase handles auth, RLS, and real-time; free tier sufficient for project scale.
 - Negative: Tied to Supabase's opinionated API; Edge Functions have cold-start latency; harder to self-host.
@@ -58,7 +56,7 @@ Consequences:
 
 Supersedes: N/A
 
-Status: superseded by 2026-06-13 [Architecture Migration: Fullstack Next.js 15]
+Status: superseded by 2026-06-13
 
 References: 
 

@@ -94,7 +94,7 @@ export default function App() {
       setUser(null)
       setStatusError('No access profile found for this account. Please wait for an admin to set up your profile.')
       setIsInitializing(false)
-      return
+      return false
     }
 
     if (!data.is_active) {
@@ -102,7 +102,7 @@ export default function App() {
       setUser(null)
       setStatusError('That account is disabled. An administrator must reactivate it before sign in.')
       setIsInitializing(false)
-      return
+      return false
     }
 
     const initials = data.full_name
@@ -133,7 +133,7 @@ export default function App() {
     }
   }
 
-  async function handleRegisterRequest(account: CreateAccessAccountInput): Promise<void> {
+  async function handleRegisterRequest(account: CreateAccessAccountInput): Promise<boolean> {
     setStatusError(undefined)
     setStatusNotice(undefined)
     const { data, error } = await supabase.auth.signUp({
@@ -142,28 +142,29 @@ export default function App() {
       options: {
         data: {
           full_name: account.fullName,
+          role: 'staff',
         }
       }
     })
 
     if (error) {
       setStatusError(error.message)
-      return
+      return false
     }
 
     if (data.user) {
-      // Create profile manually since there is no trigger
-      const { error: profileError } = await supabase.from('profiles').insert({
+      // Create profile manually since this frontend does not rely on a database trigger yet.
+      const { error: profileError } = await supabase.from('profiles').upsert({
         id: data.user.id,
         email: account.email.toLowerCase(),
         full_name: account.fullName,
         role: 'staff',
-        is_active: false,
-      })
+        is_active: true,
+      }, { onConflict: 'id' })
 
       if (profileError) {
         setStatusError('Account created but failed to stage profile: ' + profileError.message)
-        return
+        return false
       }
 
       // Supabase signUp automatically logs in if email confirmation is off. 

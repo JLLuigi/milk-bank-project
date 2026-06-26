@@ -127,7 +127,7 @@ export function Layout({ user, currentScreen, onNavigate, onLogout, children }: 
       </div>
 
       {/* Nav */}
-      <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-5">
+      <nav className="app-scrollbar app-scrollbar-dark flex-1 overflow-y-auto py-4 px-3 space-y-5">
         {NAV_GROUPS.map((group) => {
           const visibleItems = group.items.filter((item) => !item.adminOnly || isAdmin)
           const grayedItems = group.items.filter((item) => item.adminOnly && !isAdmin)
@@ -369,7 +369,7 @@ export function Layout({ user, currentScreen, onNavigate, onLogout, children }: 
         </header>
 
         {/* Content */}
-        <main className="flex-1 overflow-y-auto">
+        <main className="app-scrollbar flex-1 overflow-y-auto">
           <div className="p-6 lg:p-8 max-w-[1400px] mx-auto">
             {children}
           </div>
