@@ -178,3 +178,42 @@
     line-height: 1.5;
   }
 }
+@layer utilities {
+  .app-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(99, 98, 96, 0.30) transparent;
+    scrollbar-gutter: stable;
+  }
+
+  .app-scrollbar::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  .app-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .app-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(99, 98, 96, 0.24);
+    border: 3px solid #F8F7F5;
+    border-radius: 9999px;
+  }
+
+  .app-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 98, 96, 0.42);
+  }
+
+  .app-scrollbar-dark {
+    scrollbar-color: rgba(238, 164, 187, 0.38) transparent;
+  }
+
+  .app-scrollbar-dark::-webkit-scrollbar-thumb {
+    background: rgba(238, 164, 187, 0.30);
+    border-color: #322e2d;
+  }
+
+  .app-scrollbar-dark::-webkit-scrollbar-thumb:hover {
+    background: rgba(238, 164, 187, 0.52);
+  }
+}
